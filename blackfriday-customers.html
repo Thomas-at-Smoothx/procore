@@ -669,7 +669,7 @@ function buildSend(){
   if(!ended) lines.push('','Please include the VIP onboarding that comes with the Black Friday offer.');
   lines.push('',`Company: ${co}`,'Name:','Smoothx account email:');
   const subj=(ended?'Pricing enquiry: ':'Black Friday discount: ')+(prod||'add-ons')+(co?' – '+co:'')+' (existing customer)';
-  $('#mSend').href='mailto:hello@smoothx.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n'));
+  $('#mSend').href='mailto:thomas.bruneau@smoothx.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n'));
   $('#mSend').textContent=prod?`Email my ${prod} request`:'Email my request';
   if(ps||cp) $('#mErr').textContent='';
 }
