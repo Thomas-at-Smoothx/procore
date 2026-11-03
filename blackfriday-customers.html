@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Black Friday for Smoothx customers – ProScan+ and Cost+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f6; --surface:#ffffff; --raised:#f4f6f9; --text:#08121d; --muted:#5b6a7c;
+  --line:rgba(8,18,29,.12); --line-2:rgba(8,18,29,.22); --ghost:rgba(8,18,29,.10);
+  --or:#e83700; --or-text:#c42f00; --or-soft:rgba(232,55,0,.10); --ok:#1f8a5b;
+  --f:"Sora","Avenir Next","Segoe UI",system-ui,Arial,sans-serif;
+  --ease:cubic-bezier(.16,.84,.24,1);
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#08121d; --surface:#0e1c2c; --raised:#15283d; --text:#f4f0ea; --muted:#8fa0b3;
+    --line:rgba(244,240,234,.10); --line-2:rgba(244,240,234,.22); --ghost:rgba(244,240,234,.10);
+    --or:#e83700; --or-text:#ff6a38; --or-soft:rgba(255,92,38,.14); --ok:#3fcf8e; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08121d; --surface:#0e1c2c; --raised:#15283d; --text:#f4f0ea; --muted:#8fa0b3;
+  --line:rgba(244,240,234,.10); --line-2:rgba(244,240,234,.22); --ghost:rgba(244,240,234,.10);
+  --or:#e83700; --or-text:#ff6a38; --or-soft:rgba(255,92,38,.14); --ok:#3fcf8e; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(110px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--text);font-family:var(--f);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--or-text)}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px;border-radius:6px}
+img,svg{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding-left:clamp(16px,3vw,32px);padding-right:clamp(16px,3vw,32px)}
+.pn{white-space:nowrap}.pn .pl{color:var(--or)}
+
+/* bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;height:62px}
+.wm{display:inline-flex;align-items:baseline;font-weight:300;font-size:25px;letter-spacing:-.01em;line-height:1;white-space:nowrap;color:var(--text);text-decoration:none;flex-shrink:0}
+.wm svg{height:.62em;width:1.22em;margin:0 .02em;transform:translateY(.04em);overflow:visible}
+.wm .x{color:var(--or)}
+.member{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 8px;border:1px solid var(--line-2);border-radius:100px;font-size:13px;color:var(--muted);white-space:nowrap}
+.member svg{width:15px;height:15px;color:var(--or)}
+.member b{color:var(--text);font-weight:600}
+.cur{margin-left:auto;display:flex;border:1px solid var(--line-2);border-radius:100px;overflow:hidden}
+.cur button{border:0;background:transparent;padding:5px 11px;font-size:13px;cursor:pointer;color:var(--muted)}
+.cur button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+
+/* hero */
+.hero{padding-top:clamp(36px,6vw,64px);padding-bottom:28px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+.hero h1{font-size:clamp(32px,4.4vw,58px);font-weight:600;letter-spacing:-.045em;line-height:1.02;max-width:15ch}
+.hero p{font-size:17px;color:var(--muted);max-width:46ch;margin-top:14px}
+.total{text-align:right}
+.total .lab{font-size:13px;color:var(--muted)}
+.total .big{font-size:clamp(44px,6vw,84px);font-weight:600;letter-spacing:-.055em;line-height:1;color:var(--or-text);font-variant-numeric:tabular-nums}
+.total .sub{font-size:14px;color:var(--muted)}
+
+/* hours grid */
+.hours{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px 28px;align-items:center}
+.hours .k{font-size:44px;font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.hours .k small{display:block;font-size:13px;font-weight:400;letter-spacing:0;color:var(--muted);margin-top:6px;max-width:22ch;line-height:1.35}
+.dots{display:flex;flex-wrap:wrap;gap:6px}
+.dots i{width:18px;height:18px;border-radius:4px;background:var(--ghost);transition:background .35s var(--ease)}
+.dots i.ps{background:var(--or)}
+.dots i.cp{background:var(--text)}
+.key{grid-column:1/-1;display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.key span{display:inline-flex;align-items:center;gap:8px}
+.key span::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--or)}
+.key span.c::before{background:var(--text)}
+.key span.g::before{background:var(--ghost)}
+
+/* product cards */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.c-hd{display:flex;align-items:flex-start;gap:14px}
+.c-ico{width:50px;height:50px;border-radius:14px;background:var(--or-soft);color:var(--or-text);display:grid;place-items:center;flex-shrink:0}
+.c-ico svg{width:26px;height:26px}
+.c-hd h2{font-size:28px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.c-hd p{color:var(--muted);font-size:14px}
+.play{margin-left:auto;flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--or);color:#fff;display:grid;place-items:center;text-decoration:none;position:relative}
+.play svg{width:16px;height:16px;margin-left:3px}
+.play::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--or);opacity:.45}
+.play:hover{background:#ff4a14}
+
+.q{font-size:14px;font-weight:600}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.presets button{flex:1 1 auto;border:1px solid var(--line-2);background:transparent;border-radius:100px;padding:8px 12px;cursor:pointer;transition:border-color .2s,background .2s,color .2s;white-space:nowrap}
+.presets button b{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.presets button small{font-size:11px;color:var(--muted)}
+.presets button[aria-pressed="true"]{border-color:var(--or);background:var(--or);color:#fff}
+.presets button:hover{border-color:var(--text)}
+input[type=range]{width:100%;accent-color:var(--or);height:22px;cursor:pointer;margin-top:10px}
+.vol{font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+.vol b{color:var(--text);font-variant-numeric:tabular-nums}
+
+.bars{display:grid;gap:7px}
+.br{display:grid;grid-template-columns:64px 1fr 64px;gap:10px;align-items:center;font-size:13px}
+.br .n{color:var(--muted)}
+.br .t{height:18px;border-radius:7px;background:var(--raised);overflow:hidden}
+.br .t i{display:block;height:100%;border-radius:7px;transition:width .6s var(--ease);min-width:4px}
+.br.before .t i{background:var(--muted);opacity:.55}
+.br.after .t i{background:var(--or)}
+.br .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.saved{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ok);font-weight:600}
+.saved svg{width:18px;height:18px}
+
+.res{display:grid;grid-template-columns:1fr auto;align-items:end;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.res .big{font-size:clamp(38px,4vw,52px);font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.res .lab{font-size:13px;color:var(--muted);margin-top:4px}
+.res .be{font-size:13px;color:var(--muted);text-align:right;max-width:22ch}
+.res .be b{color:var(--text);display:block;font-size:17px;font-variant-numeric:tabular-nums}
+.split{display:flex;height:8px;border-radius:8px;overflow:hidden;grid-column:1/-1;background:var(--raised)}
+.split i{transition:width .6s var(--ease)}
+.split .a{background:var(--or)}.split .b{background:var(--text);opacity:.7}
+.sl{grid-column:1/-1;display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:-4px}
+.sl span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--or);margin-right:6px}
+.sl span+span::before{background:var(--text);opacity:.7}
+
+.asm{margin-top:-4px}
+.asm summary{cursor:pointer;font-size:13px;color:var(--muted);list-style:none;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.asm summary::-webkit-details-marker{display:none}
+.asm summary .pen{color:var(--or-text);text-decoration:underline;text-underline-offset:3px}
+.asm summary em{font-style:normal;color:var(--text);background:var(--raised);border-radius:6px;padding:2px 8px;font-variant-numeric:tabular-nums}
+.asm .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-top:14px}
+.asm label{display:grid;gap:4px;font-size:12px;color:var(--muted)}
+.asm .in{display:flex;align-items:center;gap:4px;border:1px solid var(--line-2);border-radius:10px;padding:7px 10px;background:var(--bg)}
+.asm .in input{width:100%;border:0;background:transparent;font-weight:600;font-variant-numeric:tabular-nums;font-size:14px;color:var(--text);-moz-appearance:textfield}
+.asm .in input::-webkit-inner-spin-button{-webkit-appearance:none}
+.asm .in span{font-size:12px;color:var(--muted)}
+
+/* how it works */
+.how{margin-top:clamp(48px,7vw,80px)}
+.how h3,.vids h3{font-size:clamp(24px,2.6vw,32px);font-weight:600;letter-spacing:-.03em;margin-bottom:18px}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px 26px;margin-bottom:16px}
+.flow .fh{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.flow .fh b{font-size:18px;font-weight:600}
+.flow .fh button{background:none;border:0;color:var(--or-text);cursor:pointer;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+.steps::before{content:"";position:absolute;left:10%;right:10%;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--or) 0 8px,transparent 8px 16px);animation:mv 1.2s linear infinite;background-size:16px 2px}
+@keyframes mv{to{background-position:16px 0}}
+.steps li{position:relative;display:grid;justify-items:center;text-align:center;gap:6px;padding:0 8px}
+.steps .si{width:56px;height:56px;border-radius:50%;background:var(--surface);border:2px solid var(--or);display:grid;place-items:center;color:var(--or-text);position:relative;z-index:1}
+.steps .si svg{width:24px;height:24px}
+.steps li.end .si{background:var(--or);color:#fff}
+.steps b{font-size:14px;font-weight:600}
+.steps span{font-size:12px;color:var(--muted);max-width:20ch}
+.fmap{margin-top:20px;border-top:1px solid var(--line);padding-top:6px}
+.fm{list-style:none}
+.fm li{display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;padding:9px 2px;border-bottom:1px solid var(--line)}
+.fm li.hd{border-bottom:2px solid var(--text);font-weight:700;font-size:14px}
+.fm b{display:block;font-size:13px;font-weight:600}
+.fm small{display:block;font-size:12px;color:var(--muted)}
+.fm .r{text-align:right}
+.fm .a{display:grid;place-items:center;color:var(--or)}
+.fm .a svg{width:54px;height:14px}
+
+/* videos */
+.vids{margin-top:clamp(48px,7vw,80px)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.vc{position:relative;display:block;aspect-ratio:16/8.5;border-radius:22px;overflow:hidden;text-decoration:none;color:#f4f0ea;background:#0e1c2c;isolation:isolate}
+.vc .scr{position:absolute;inset:14% 12% 0;background:#f4f6f9;border-radius:12px 12px 0 0;box-shadow:0 0 0 8px #15283d;transition:transform .5s var(--ease);padding:14px}
+.vc:hover .scr{transform:translateY(-6px)}
+.vc .scr i{display:block;height:8px;border-radius:4px;background:#d9dee5;margin-bottom:9px}
+.vc .scr i.o{background:#e83700;width:30%}
+.vc .scr i:nth-child(3n){width:70%}.vc .scr i:nth-child(4n){width:52%}
+.vc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,18,29,0) 35%,rgba(8,18,29,.85) 65%,#08121d 85%);z-index:1}
+.vc .pb{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:#e83700;display:grid;place-items:center;z-index:2;box-shadow:0 0 0 10px rgba(232,55,0,.25);transition:transform .3s var(--ease)}
+.vc:hover .pb{transform:translate(-50%,-50%) scale(1.08)}
+.vc .pb svg{width:26px;height:26px;color:#fff;margin-left:4px}
+.vc .cap{position:absolute;left:24px;right:24px;bottom:20px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.vc .cap b{font-size:22px;font-weight:600;letter-spacing:-.02em;display:block}
+.vc .cap span{font-size:13px;opacity:.75}
+.vc .cap em{font-style:normal;font-size:12px;border:1px solid rgba(244,240,234,.35);border-radius:100px;padding:4px 10px;white-space:nowrap}
+
+/* proof */
+.proof{margin-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;border-top:1px solid var(--line);padding-top:36px}
+.proof .qm{font-size:90px;line-height:.7;color:var(--or);font-weight:700}
+.proof blockquote{font-size:clamp(17px,1.9vw,21px);font-weight:300;line-height:1.55;max-width:62ch}
+.proof cite{display:block;font-style:normal;color:var(--muted);font-size:14px;margin-top:12px}
+footer{margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line);padding:22px 0 40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center}
+footer a{color:var(--text);text-decoration:none}
+footer .sp{margin-left:auto}
+
+
+/* black friday */
+.bf-strip{background:#000;color:#f4f0ea;font-size:13px}
+.bf-strip .wrap{display:flex;align-items:center;justify-content:center;gap:10px;height:36px;white-space:nowrap;overflow:hidden}
+.bf-strip b{color:#ff5c26;font-weight:700}
+.bf-strip .mini{font-variant-numeric:tabular-nums;font-weight:600}
+.bf-strip a{color:#f4f0ea;font-weight:600}
+.bf{background:#000;color:#f4f0ea;position:relative;overflow:hidden}
+.bf::before{content:"BLACK FRIDAY";position:absolute;right:-2vw;bottom:-0.18em;font-size:clamp(90px,15vw,220px);font-weight:700;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,92,38,.28);white-space:nowrap;pointer-events:none}
+.bf-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(36px,5vw,60px);padding-bottom:clamp(44px,6vw,72px)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tag-bf{background:#e83700;color:#fff;font-weight:700;font-size:13px;padding:5px 12px;border-radius:6px}
+.tag-ex{border:1px solid rgba(244,240,234,.35);font-size:13px;padding:4px 12px;border-radius:6px}
+.bf h1{font-size:clamp(32px,4.4vw,58px);font-weight:600;letter-spacing:-.045em;line-height:1.03;max-width:17ch}
+.bf p{color:#b9c4d0;font-size:17px;max-width:46ch;margin-top:14px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;align-items:center}
+.btn-claim{display:inline-flex;align-items:center;gap:10px;background:#e83700;color:#fff;font-weight:700;font-size:16px;padding:15px 24px;border-radius:12px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(232,55,0,.7);transition:background .2s,transform .2s}
+.btn-claim:hover{background:#ff4a14;transform:translateY(-1px)}
+.btn-claim svg{width:18px;height:18px}
+.btn-line{color:#f4f0ea;font-weight:600;font-size:15px;padding:14px 18px;border:1px solid rgba(244,240,234,.3);border-radius:12px;text-decoration:none}
+.btn-line:hover{border-color:#f4f0ea}
+.proofs{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:24px;font-size:13px;color:#b9c4d0}
+.proofs li{display:flex;align-items:center;gap:7px}
+.proofs svg{width:15px;height:15px;color:#ff5c26}
+.cd-box{background:#0e1c2c;border:1px solid rgba(255,92,38,.35);border-radius:22px;padding:26px}
+.cd-box .lab{font-size:13px;color:#b9c4d0}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 22px}
+.cd div{background:#000;border-radius:14px;padding:14px 4px 10px;text-align:center;border:1px solid rgba(244,240,234,.08)}
+.cd b{display:block;font-size:clamp(34px,4vw,52px);font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:#ff5c26}
+.cd span{font-size:12px;color:#b9c4d0}
+.cd-val{border-top:1px solid rgba(244,240,234,.12);padding-top:18px}
+.cd-val .k{font-size:13px;color:#b9c4d0}
+.cd-val .v{font-size:clamp(34px,3.6vw,46px);font-weight:600;letter-spacing:-.045em;line-height:1.1;font-variant-numeric:tabular-nums}
+.cd-val .s{font-size:13px;color:#b9c4d0}
+.ended .cd b{color:#8fa0b3}
+
+.claim{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--or);color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:14px 18px;font-size:15px;transition:background .2s}
+.claim:hover{background:#ff4a14}
+.claim svg{width:16px;height:16px}
+.claim-note{font-size:12px;color:var(--muted);text-align:center;margin-top:-12px}
+.foot{margin-top:auto;display:grid;gap:10px;padding-top:4px}
+.vip{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:600;color:var(--or-text)}
+.vip svg{width:16px;height:16px}
+.tag-vip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,92,38,.14);color:#ff8a5c;font-size:13px;font-weight:600;padding:4px 12px;border-radius:6px;border:1px solid rgba(255,92,38,.4)}
+.tag-vip svg{width:15px;height:15px}
+.m-vip{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--or-text);background:var(--or-soft);border-radius:10px;padding:10px 12px}
+.m-vip svg{width:16px;height:16px;flex-shrink:0}
+.bundle{margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:center;background:#000;color:#f4f0ea;border-radius:22px;padding:24px 28px;border:1px solid rgba(255,92,38,.35)}
+.bundle b{font-size:20px;font-weight:600;letter-spacing:-.02em;display:block}
+.bundle span{color:#b9c4d0;font-size:14px}
+.bundle .claim{padding:14px 22px}
+.mbar{display:none}
+.sline{display:flex;align-items:center;gap:12px;margin-top:6px}
+.sline input{margin:0;flex:1}
+.sline output{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;background:var(--raised);border-radius:8px;padding:3px 9px;white-space:nowrap}
+.q+.q,.acv+.q{margin-top:14px}
+.tierline{font-size:13px;color:var(--muted);margin-top:8px}
+.tierline b{color:var(--text)}
+.acv{margin-bottom:0}
+/* claim modal */
+.scrim{position:fixed;inset:0;background:rgba(4,9,15,.6);z-index:30;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.scrim.on{opacity:1;visibility:visible}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%);opacity:0;visibility:hidden;width:min(560px,calc(100% - 24px));max-height:calc(100% - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:22px;z-index:31;transition:opacity .25s,transform .35s var(--ease),visibility .25s}
+.modal.on{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+.m-hd{display:flex;justify-content:space-between;gap:12px;padding:22px 24px 6px;align-items:flex-start}
+.m-hd h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:10px}
+.m-hd p{font-size:14px;color:var(--muted);margin-top:4px}
+.m-hd .tag-bf{display:inline-block}
+.mx{background:none;border:1px solid var(--line-2);width:36px;height:36px;border-radius:50%;cursor:pointer;display:grid;place-items:center;flex-shrink:0}
+.mx svg{width:16px;height:16px}
+.m-bd{padding:12px 24px 24px;display:grid;gap:14px}
+.mp{border:1px solid var(--line-2);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.mp:has(.mp-t input:checked){border-color:var(--or)}
+.mp-t{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+.mp-t input{width:19px;height:19px;accent-color:var(--or)}
+.mp-t b{font-size:16px;font-weight:600}
+.mp-t small{margin-left:auto;font-size:12px;color:var(--muted)}
+.mp fieldset{border:0;border-top:1px solid var(--line);padding:12px 16px 16px}
+.mp legend{font-size:13px;color:var(--muted);padding:0;margin-bottom:8px;float:left;width:100%}
+.tiers{display:flex;flex-wrap:wrap;gap:8px;clear:both}
+.tc{position:relative}
+.tc input{position:absolute;opacity:0;inset:0}
+.tc span{display:block;border:1px solid var(--line-2);border-radius:100px;padding:7px 14px;font-size:13px;cursor:pointer;font-variant-numeric:tabular-nums}
+.tc input:checked+span{background:var(--or);border-color:var(--or);color:#fff;font-weight:600}
+.tc input:focus-visible+span{outline:2px solid var(--or);outline-offset:2px}
+.mf{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.mf input{padding:11px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);font-size:14px;color:var(--text)}
+.m-err{font-size:13px;color:var(--or-text);min-height:0}
+.m-alt{text-align:center;font-size:13px}
+@media (max-width:760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:6;background:#000;color:#f4f0ea;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));align-items:center;gap:12px;border-top:1px solid rgba(255,92,38,.4)}
+  .mbar .t{font-size:12px;line-height:1.3;color:#b9c4d0}
+  .mbar .t b{display:block;color:#ff5c26;font-size:15px;font-variant-numeric:tabular-nums}
+  .mbar .claim{margin-left:auto;padding:11px 16px;font-size:14px}
+  footer{padding-bottom:110px}
+  .bf-strip .hide-s{display:none}
+}
+@media (max-width:960px){.bf-in{grid-template-columns:1fr}.bundle{grid-template-columns:1fr}}
+@media (max-width:960px){
+  .duo,.vgrid{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .total{text-align:left}
+  .steps{grid-template-columns:1fr;gap:14px}
+  .steps::before{left:27px;right:auto;top:20px;bottom:20px;width:2px;height:auto;background:repeating-linear-gradient(180deg,var(--or) 0 8px,transparent 8px 16px);background-size:2px 16px;animation:none}
+  .steps li{grid-template-columns:56px 1fr;justify-items:start;text-align:left;column-gap:14px;padding:0}
+  .steps .si{grid-row:span 2}
+  .steps span{max-width:none}
+}
+@media (max-width:600px){
+  .member{display:none!important}
+  .member{font-size:12px;padding:5px 10px;min-width:0;overflow:hidden}
+  .member b{overflow:hidden;text-overflow:ellipsis}
+  .cur{flex-shrink:0}
+  .cur button{padding:5px 8px}
+  .bar .wrap{gap:10px}.wm{font-size:22px}
+  .hours{grid-template-columns:1fr}
+  .dots i{width:11px;height:11px}
+  .card{padding:20px}
+  .presets b{font-size:13px!important}
+  .presets button{padding:8px 10px}
+
+  .res .big{font-size:36px}
+  .asm .grid{grid-template-columns:1fr}
+  .fm li{grid-template-columns:1fr 44px 1fr}.fm .a svg{width:34px}
+  .vc{aspect-ratio:4/3}
+  .proof{grid-template-columns:1fr}
+}
+@media print{.bar,.play,input[type=range],.presets,.asm{display:none!important}}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+ <div class="bf-strip" id="strip"><div class="wrap"><b>Black Friday</b><span class="hide-s">for existing customers</span><span>ends in <span class="mini" data-cd="short">–</span></span><a href="#offer" class="hide-s">See the offer</a></div></div>
+ <div class="wrap">
+  <a class="wm" href="#top" aria-label="Smoothx">sm<svg viewBox="0 0 122 62" aria-hidden="true"><circle cx="37" cy="31" r="25" fill="none" stroke="#e83700" stroke-width="7"/><circle cx="85" cy="31" r="25" fill="none" stroke="#e83700" stroke-width="7"/></svg>th<span class="x">x</span></a>
+  <span class="member"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.1 6.6.8-4.9 4.5 1.3 6.6L12 16.8 6.1 20l1.3-6.6L2.5 8.9l6.6-.8z"/></svg><b>Existing customers only</b><span class="long">&nbsp;– add-ons for your Smoothx account</span></span>
+  <div class="cur" role="group" aria-label="Currency"><button data-c="$">$</button><button data-c="£">£</button><button data-c="€">€</button></div>
+ </div>
+</header>
+
+<main id="top">
+ <section class="bf" id="offer" aria-labelledby="bfH">
+  <div class="wrap bf-in">
+   <div>
+    <div class="tags"><span class="tag-bf">Black Friday</span><span class="tag-ex">Existing Smoothx customers only</span><span class="tag-vip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>VIP onboarding included</span></div>
+    <h1 id="bfH">Add ProScan+ and Cost+ at a limited Black Friday discount.</h1>
+    <p>Only for current Smoothx customers, and only until 30 November. Every Black Friday order includes VIP onboarding. Pick your volumes below to see what each add-on is worth to you.</p>
+    <div class="ctas">
+     <a class="btn-claim" data-claim="both" href="#claim" role="button">Claim my Black Friday discount <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+     <a class="btn-line" href="https://calendly.com/smoothlink/smoothx-demo?month=2026-11" target="_blank" rel="noopener">Book a call first</a>
+    </div>
+    <ul class="proofs">
+     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>5-star rated</li>
+     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>2,000+ installs</li>
+     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>ProScan+ live in under 30 minutes</li>
+     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Same support team you already know</li>
+    </ul>
+   </div>
+   <div class="cd-box" id="cdBox">
+    <div class="lab" id="cdLab">Discount ends 30 November at midnight</div>
+    <div class="cd" role="timer" aria-live="off" aria-label="Time left on the Black Friday offer">
+     <div><b data-cd="d">–</b><span>days</span></div>
+     <div><b data-cd="h">–</b><span>hours</span></div>
+     <div><b data-cd="m">–</b><span>minutes</span></div>
+     <div><b data-cd="s">–</b><span>seconds</span></div>
+    </div>
+    <div class="cd-val" aria-live="polite">
+     <div class="k">Both add-ons are worth to you, per year</div>
+     <div class="v" id="tAll">–</div>
+     <div class="s" id="tSub">–</div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="wrap" aria-label="Hours back each month" style="padding-top:clamp(28px,4vw,44px)">
+  <div class="hours">
+   <div class="k" id="hK">–<small>hours back every month</small></div>
+   <div class="dots" id="dots" aria-hidden="true"></div>
+   <div class="key"><span>ProScan+</span><span class="c">Cost+</span><span class="g">Still manual</span><em style="margin-left:auto;font-style:normal">Each square is one hour a month</em></div>
+  </div>
+
+  <div class="duo">
+   <!-- ProScan+ -->
+   <article class="card" id="proscan" aria-labelledby="psH">
+    <div class="c-hd">
+     <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span>
+     <div><h2 id="psH" class="pn">ProScan<span class="pl">+</span></h2><p>Supplier invoices into Procore. No typing.</p></div>
+     <a class="play" href="https://watch.videodelivery.net/eafbe40920ad9613d22d6b79c4486f5a" target="_blank" rel="noopener" aria-label="Watch the ProScan+ video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></a>
+    </div>
+    <div>
+     <div class="q">Supplier invoices a month</div>
+     <div class="presets t7" id="psTiers" role="group" aria-label="Supplier invoices a month"></div>
+     <div class="sline"><input type="range" id="psInv" min="10" max="3000" step="10" value="175" aria-label="Supplier invoices per month"><output id="psInvO">175</output><b id="psTierO" hidden></b></div>
+    </div>
+    <div class="bars">
+     <div class="br before"><span class="n">By hand</span><span class="t"><i id="psB1"></i></span><span class="v" id="psV1">–</span></div>
+     <div class="br after"><span class="n">ProScan+</span><span class="t"><i id="psB2"></i></span><span class="v" id="psV2">–</span></div>
+     <div class="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span id="psSv">–</span></div>
+    </div>
+    <div class="res" aria-live="polite">
+     <div><div class="big" id="psYr">–</div><div class="lab">a year in time back</div></div>
+     <div class="be">Pays for itself under<b id="psBe">–</b>a month</div>
+    </div>
+    <details class="asm">
+     <summary><span class="pen">Assumptions</span><em id="psSum">6 min → 1 min</em><em id="psRateS">$45/h</em></summary>
+     <div class="grid">
+      <label>Minutes per invoice by hand<span class="in"><input type="number" id="psMan" value="6" min="0" step="1"><span>min</span></span></label>
+      <label>Minutes with ProScan+ (review)<span class="in"><input type="number" id="psNew" value="1" min="0" step="0.5"><span>min</span></span></label>
+      <label>Hourly cost incl. on-costs<span class="in"><span class="cs">$</span><input type="number" id="psRate" value="45" min="0" step="1"></span></label>
+     </div>
+    </details>
+    <div class="foot"><span class="vip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>VIP onboarding included</span>
+    <a class="claim" data-claim="ps" href="#claim" role="button">Claim ProScan+ at the Black Friday discount <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+   </article>
+
+   <!-- Cost+ -->
+   <article class="card" id="costplus" aria-labelledby="cpH">
+    <div class="c-hd">
+     <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7"/><path d="M19 6v6M16 9h6"/></svg></span>
+     <div><h2 id="cpH" class="pn">Cost<span class="pl">+</span></h2><p>Cost-plus claims in minutes, not hours.</p></div>
+     <a class="play" href="https://marketplace.procore.com/apps/cost-by-smoothx" target="_blank" rel="noopener" aria-label="Watch Cost+ on Procore Marketplace"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></a>
+    </div>
+    <div>
+     <div class="acv">
+      <div class="q">Annual cost-plus contract value</div>
+      <div class="presets t2" id="acvTiers" role="group" aria-label="Annual cost-plus contract value"></div>
+     </div>
+     <div class="q">Cost-plus claims a month</div>
+     <div class="presets" data-for="cpClm">
+      <button data-v="2"><b>2</b></button>
+      <button data-v="4"><b>4</b></button>
+      <button data-v="10"><b>10</b></button>
+      <button data-v="25"><b>25</b></button>
+     </div>
+     <div class="sline"><input type="range" id="cpClm" min="1" max="60" step="1" value="4" aria-label="Cost-plus claims per month"><output id="cpClmO">4</output></div>
+    </div>
+    <div class="bars">
+     <div class="br before"><span class="n">By hand</span><span class="t"><i id="cpB1"></i></span><span class="v" id="cpV1">–</span></div>
+     <div class="br after"><span class="n">Cost+</span><span class="t"><i id="cpB2"></i></span><span class="v" id="cpV2">–</span></div>
+     <div class="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span id="cpSv">–</span></div>
+    </div>
+    <div class="res" aria-live="polite">
+     <div><div class="big" id="cpYr">–</div><div class="lab">a year: <span id="cpLa">–</span> time + <span id="cpLb">–</span> recovered costs</div></div>
+     <div class="be">Pays for itself under<b id="cpBe">–</b>a month</div>
+    </div>
+    <details class="asm">
+     <summary><span class="pen">Assumptions</span><em id="cpSum">4 h → 0.5 h</em><em id="cpRateS">$60/h</em><em id="cpMissS">$1,000 missed</em></summary>
+     <div class="grid">
+      <label>Hours per claim by hand<span class="in"><input type="number" id="cpMan" value="4" min="0" step="0.5"><span>h</span></span></label>
+      <label>Hours per claim with Cost+<span class="in"><input type="number" id="cpNew" value="0.5" min="0" step="0.25"><span>h</span></span></label>
+      <label>Hourly cost incl. on-costs<span class="in"><span class="cs">$</span><input type="number" id="cpRate" value="60" min="0" step="1"></span></label>
+      <label>Costs missed or billed late a month<span class="in"><span class="cs">$</span><input type="number" id="cpMiss" value="1000" min="0" step="100"></span></label>
+     </div>
+    </details>
+    <div class="foot"><span class="vip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>VIP onboarding included</span>
+    <a class="claim" data-claim="cp" href="#claim" role="button">Claim Cost+ at the Black Friday discount <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+   </article>
+  </div>
+  <div class="bundle">
+   <div><b>Take both before 30 November</b><span id="bnTx">–</span></div>
+   <a class="claim" data-claim="both" href="#claim" role="button">Claim both at the Black Friday discount <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+ </section>
+
+ <section class="wrap proof" aria-label="Customer feedback">
+  <span class="qm" aria-hidden="true">“</span>
+  <div>
+   <blockquote>Then came Emma Glasson who assisted myself with the onboarding experience and I cannot speak more highly of her. She is professional, punctual, responsive and knowledgeable in her field.</blockquote>
+   <cite>Matthew, Inspired Masonry</cite>
+  </div>
+ </section>
+
+ <!-- HOW IT WORKS -->
+ <section class="wrap how" aria-labelledby="howH">
+  <h3 id="howH">How each one works</h3>
+  <div class="flow">
+   <div class="fh"><b class="pn">ProScan<span class="pl">+</span></b><button type="button" data-map="fmPS" aria-expanded="false">Show the full feature map</button></div>
+   <ol class="steps">
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span><b>Capture</b><span>Phone app, email or drag and drop</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span><b>Read</b><span>OCR pulls vendor, number, lines and tax</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span><b>Match</b><span>Project, commitment and vendor, with a duplicate check</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15l2 2 4-4"/></svg></span><b>Into Procore</b><span>Commitment invoice or direct cost, with the file attached</span></li>
+    <li class="end"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><b>Your accounts</b><span>Synced on through your Smoothx integration</span></li>
+   </ol>
+   <div class="fmap" id="fmPS" hidden><ul class="fm"></ul></div>
+  </div>
+  <div class="flow">
+   <div class="fh"><b class="pn">Cost<span class="pl">+</span></b><button type="button" data-map="fmCP" aria-expanded="false">Show the full feature map</button></div>
+   <ol class="steps">
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg></span><b>Pull costs</b><span>Commitments and direct costs from Procore</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12l3 3 5-6"/></svg></span><b>Select</b><span>Tick what to bill. Non-billable codes stay out</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span><b>Mark up</b><span>Labour and materials, by cost code</span></li>
+    <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15l2 2 4-4"/></svg></span><b>Claim in Procore</b><span>Prime contract claim created or updated</span></li>
+    <li class="end"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg></span><b>Client PDF</b><span>Summary plus every invoice, in order</span></li>
+   </ol>
+   <div class="fmap" id="fmCP" hidden><ul class="fm"></ul></div>
+  </div>
+ </section>
+
+ <!-- VIDEOS -->
+ <section class="wrap vids" aria-labelledby="vidH">
+  <h3 id="vidH">See them in action</h3>
+  <div class="vgrid">
+   <a class="vc" href="https://watch.videodelivery.net/eafbe40920ad9613d22d6b79c4486f5a" target="_blank" rel="noopener">
+    <div class="scr" aria-hidden="true"><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <span class="pb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></span>
+    <span class="cap"><span><b>ProScan<span style="color:#ff5c26">+</span> walkthrough</b><span>From scanned invoice to Procore</span></span><em>Video</em></span>
+   </a>
+   <a class="vc" href="https://marketplace.procore.com/apps/cost-by-smoothx" target="_blank" rel="noopener">
+    <div class="scr" aria-hidden="true"><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <span class="pb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></span>
+    <span class="cap"><span><b>Cost<span style="color:#ff5c26">+</span> on Procore Marketplace</b><span>Watch the demo on the app listing</span></span><em>Procore</em></span>
+   </a>
+  </div>
+ </section>
+
+</main>
+
+<div class="mbar" aria-label="Black Friday offer"><span class="t">Black Friday ends in<b data-cd="short">–</b></span><a class="claim" data-claim="both" href="#claim" role="button">Claim discount</a></div>
+
+<div class="scrim" id="scrim"></div>
+<div class="modal" id="claimM" role="dialog" aria-modal="true" aria-labelledby="cmT" aria-hidden="true">
+ <div class="m-hd">
+  <div><span class="tag-bf" id="cmTag">Black Friday</span><h3 id="cmT">Claim your Black Friday discount</h3><p id="cmP">Pick your tiers. We’ll reply with your discounted price for your existing account.</p></div>
+  <button class="mx" id="cmX" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+ </div>
+ <div class="m-bd">
+  <div class="mp">
+   <label class="mp-t"><input type="checkbox" id="mPS"><b>ProScan<span style="color:var(--or)">+</span></b><small>Priced by invoices a month</small></label>
+   <fieldset id="fsPS"><legend>Supplier invoices a month</legend><div class="tiers" id="mPSt"></div></fieldset>
+  </div>
+  <div class="mp">
+   <label class="mp-t"><input type="checkbox" id="mCP"><b>Cost<span style="color:var(--or)">+</span></b><small>Priced by ACV</small></label>
+   <fieldset id="fsCP"><legend>Annual cost-plus contract value (ACV)</legend><div class="tiers" id="mCPt"></div></fieldset>
+  </div>
+  <div class="m-vip" id="mVip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>VIP onboarding included with every Black Friday order</div>
+  <label class="mf">Company<input id="mCo" autocomplete="organization" placeholder="So we can find your account"></label>
+  <div class="m-err" id="mErr" role="alert"></div>
+  <a class="claim" id="mSend" href="#" target="_blank" rel="noopener">Email my request</a>
+  <a class="m-alt" href="https://calendly.com/smoothlink/smoothx-demo?month=2026-11" target="_blank" rel="noopener">Rather talk first? Book a call</a>
+ </div>
+</div>
+
+<footer>
+ <div class="wrap">
+  <a class="sp" href="https://www.smoothx.com" target="_blank" rel="noopener">www.smoothx.com</a>
+ </div>
+</footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let C=store.get('sx-cur')||'$';
+const m=n=>C+Math.round(n).toLocaleString('en-US');
+const h=n=>{const r=Math.round(n*10)/10;return r.toLocaleString('en-US')};
+const IDS=['psInv','psMan','psNew','psRate','cpClm','cpMan','cpNew','cpRate','cpMiss'];
+let saved={};try{saved=JSON.parse(store.get('sx-roi2')||'{}')}catch(e){}
+IDS.forEach(id=>{if(saved[id]!=null&&isFinite(saved[id]))$('#'+id).value=saved[id]});
+const g=id=>Math.max(0,+$('#'+id).value||0);
+
+/* currency */
+const setCur=c=>{C=c;store.set('sx-cur',c);$$('.cur button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===c));calc()};
+$$('.cur button').forEach(b=>b.onclick=()=>setCur(b.dataset.c));
+
+/* tiers */
+const PS_T=[{l:'Under 100',lo:0,hi:99,v:60},{l:'100–250',lo:100,hi:250,v:175},{l:'250–500',lo:251,hi:500,v:375},{l:'500–1,000',lo:501,hi:1000,v:750},{l:'1,000–1,500',lo:1001,hi:1500,v:1250},{l:'1,500–2,000',lo:1501,hi:2000,v:1750},{l:'2,000+',lo:2001,hi:Infinity,v:2500}];
+const psTierOf=v=>PS_T.findIndex(t=>v>=t.lo&&v<=t.hi);
+const ACV_T=[{k:'u5',l:()=>'Under '+C+'5M'},{k:'o5',l:()=>C+'5M and over'}];
+let acv=store.get('sx-acv')||'u5';
+$('#psTiers').innerHTML=PS_T.map((t,i)=>`<button type="button" data-i="${i}"><b>${t.l}</b></button>`).join('');
+$$('#psTiers button').forEach(b=>b.onclick=()=>{$('#psInv').value=PS_T[b.dataset.i].v;calc()});
+function drawAcv(){$('#acvTiers').innerHTML=ACV_T.map(t=>`<button type="button" data-k="${t.k}" aria-pressed="${t.k===acv}"><b>${t.l()}</b></button>`).join('');
+  $$('#acvTiers button').forEach(b=>b.onclick=()=>{acv=b.dataset.k;store.set('sx-acv',acv);drawAcv()})}
+/* presets + sliders */
+$$('.presets[data-for]').forEach(p=>{
+  const r=$('#'+p.dataset.for);
+  p.querySelectorAll('button').forEach(b=>b.onclick=()=>{r.value=b.dataset.v;calc()});
+});
+IDS.forEach(id=>$('#'+id).addEventListener('input',calc));
+
+/* dots */
+const dots=$('#dots'); const N=120;
+dots.innerHTML='<i></i>'.repeat(N); const D=[...dots.children];
+
+let last={};
+function calc(){
+  $$('.cs').forEach(e=>e.textContent=C);
+  // ProScan+
+  const inv=g('psInv'),man=g('psMan'),nw=Math.min(g('psNew'),man),rate=g('psRate');
+  const psBefore=inv*man/60, psAfter=inv*nw/60, psHrs=psBefore-psAfter, psMo=psHrs*rate, psYr=psMo*12;
+  // Cost+
+  const clm=g('cpClm'),cm=g('cpMan'),cn=Math.min(g('cpNew'),cm),cr=g('cpRate'),miss=g('cpMiss');
+  const cpBefore=clm*cm, cpAfter=clm*cn, cpHrs=cpBefore-cpAfter, cpT=cpHrs*cr, cpMo=cpT+miss, cpYr=cpMo*12;
+
+  $('#psInvO').textContent=inv.toLocaleString('en-US')+' / mo'; $('#cpClmO').textContent=clm+' / mo';
+  $$('.presets[data-for]').forEach(p=>{const v=+$('#'+p.dataset.for).value;p.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===v))});
+  const ti=psTierOf(inv); $$('#psTiers button').forEach((b,i)=>b.setAttribute('aria-pressed',i===ti)); $('#psTierO').textContent=PS_T[ti].l;
+  drawAcv();
+
+  const scale=Math.max(psBefore,cpBefore,1);
+  $('#psB1').style.width=(psBefore/scale*100)+'%'; $('#psB2').style.width=(psAfter/scale*100)+'%';
+  $('#cpB1').style.width=(cpBefore/scale*100)+'%'; $('#cpB2').style.width=(cpAfter/scale*100)+'%';
+  $('#psV1').textContent=h(psBefore)+' h'; $('#psV2').textContent=h(psAfter)+' h';
+  $('#cpV1').textContent=h(cpBefore)+' h'; $('#cpV2').textContent=h(cpAfter)+' h';
+  $('#psSv').textContent=`${h(psHrs)} hours back a month (${man?Math.round((man-nw)/man*100):0}% less time)`;
+  $('#cpSv').textContent=`${h(cpHrs)} hours back a month (${cm?Math.round((cm-cn)/cm*100):0}% less time)`;
+
+  $('#psYr').textContent=m(psYr); $('#psBe').textContent=m(psMo);
+  $('#cpYr').textContent=m(cpYr); $('#cpBe').textContent=m(cpMo);
+  $('#cpLa').textContent=m(cpT*12); $('#cpLb').textContent=m(miss*12);
+
+  $('#psSum').textContent=`${h(man)} min → ${h(nw)} min`; $('#psRateS').textContent=`${m(rate)}/h`;
+  $('#cpSum').textContent=`${h(cm)} h → ${h(cn)} h`; $('#cpRateS').textContent=`${m(cr)}/h`; $('#cpMissS').textContent=`${m(miss)} missed`;
+
+  const tot=psYr+cpYr, hrs=psHrs+cpHrs;
+  $('#tAll').textContent=m(tot);
+  $('#tSub').textContent=`${h(hrs*12/38)} working weeks back each year`;
+  $('#hK').innerHTML=Math.round(hrs)+'<small>hours back every month, out of '+Math.round(psBefore+cpBefore)+' spent by hand today</small>';
+  // dots: one per hour of manual work today (capped), coloured by saved hours
+  const total=Math.min(N,Math.round(psBefore+cpBefore)), a=Math.min(total,Math.round(psHrs)), b=Math.min(total-a,Math.round(cpHrs));
+  D.forEach((d,i)=>{d.style.display=i<total?'':'none';d.className=i<a?'ps':i<a+b?'cp':''});
+
+  $('#bnTx').textContent=`Together they’re worth about ${m(tot)} a year and ${Math.round(hrs)} hours a month to your team. VIP onboarding included.`;
+  last={inv,clm,psYr,cpYr,tot,psHrs,cpHrs};
+  updateClaims();
+  const s={};IDS.forEach(i=>s[i]=+$('#'+i).value);store.set('sx-roi2',JSON.stringify(s));
+}
+
+/* feature maps */
+const A={r:'<svg viewBox="0 0 64 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="One way, left to right"><path d="M4 8h54M50 2l8 6-8 6"/></svg>',
+ l:'<svg viewBox="0 0 64 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="One way, right to left"><path d="M60 8H6M14 2L6 8l8 6"/></svg>',
+ b:'<svg viewBox="0 0 64 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="Two way"><path d="M6 8h52M14 2L6 8l8 6M50 2l8 6-8 6"/></svg>'};
+const row=r=>`<li><span><b>${r[0]}</b><small>${r[1]}</small></span><span class="a">${A[r[2]]}</span><span class="r"><b>${r[3]}</b><small>${r[4]}</small></span></li>`;
+$('#fmPS ul').innerHTML='<li class="hd"><span>ProScan+</span><span></span><span class="r">Procore</span></li>'+[
+ ['Scanned subcontractor invoice','Progress claim','r','Commitment invoice','Subcontractor invoice'],
+ ['Scanned supplier invoice or receipt','Not tied to a commitment','r','Direct cost','Invoice or expense'],
+ ['Vendor profiles','Scanned name and ABN / tax ID','l','Companies','Procore directory'],
+ ['Project and commitment match','Used to file each scan','l','Projects, commitments, cost codes','Live Procore financials'],
+ ['Line items, tax and totals','Editable before publishing','r','Invoice line items','Amounts and tax'],
+ ['Original invoice file','PDF or photo','r','Attachment','On the Procore record'],
+ ['Duplicate check','Before publishing','b','Existing invoices','Real-time sync'],
+ ['Published invoice','After approval in Procore','r','Accounting system','Through your Smoothx integration']].map(row).join('');
+$('#fmCP ul').innerHTML='<li class="hd"><span>Procore</span><span></span><span class="r">Cost+</span></li>'+[
+ ['Commitment invoices','Subcontractor progress claims','r','Billable expenses','Select what to invoice'],
+ ['Direct costs','Invoices and expenses','r','Billable expenses','Select what to invoice'],
+ ['Cost codes','Labour and materials','r','Markup rules','Global or per project'],
+ ['Non-billable cost codes','Marked once','r','Left out of claims','Automatically'],
+ ['Prime / head contract claim','Progress invoice','l','Generated claim','Create or update'],
+ ['Head contract variations','Change orders','b','Claim lines','Included in the claim'],
+ ['Expense attachments','Invoices on each cost','r','Client summary PDF','Your logo, in date, cost code and supplier order'],
+ ['Status points and permissions','Procore access rules','r','Secure, authorised sync','Applied to every claim']].map(row).join('');
+$$('[data-map]').forEach(b=>b.onclick=()=>{const el=$('#'+b.dataset.map),open=el.hidden;el.hidden=!open;b.setAttribute('aria-expanded',open);b.textContent=open?'Hide the full feature map':'Show the full feature map'});
+
+/* claim links: one click, prefilled email */
+let ended=false;
+function updateClaims(){ if(modal.classList.contains('on')) buildSend(); }
+const modal=$('#claimM'),scrim=$('#scrim'); let lastF=null;
+function renderTiers(){
+  const pi=psTierOf(last.inv??175);
+  $('#mPSt').innerHTML=PS_T.map((t,i)=>`<label class="tc"><input type="radio" name="mpsT" value="${i}" ${i===pi?'checked':''}><span>${t.l}</span></label>`).join('');
+  $('#mCPt').innerHTML=ACV_T.map(t=>`<label class="tc"><input type="radio" name="mcpT" value="${t.k}" ${t.k===acv?'checked':''}><span>${t.l()}</span></label>`).join('');
+  modal.querySelectorAll('.tiers input').forEach(i=>i.onchange=buildSend);
+}
+function syncFs(){ $('#fsPS').hidden=!$('#mPS').checked; $('#fsCP').hidden=!$('#mCP').checked; }
+function buildSend(){
+  syncFs();
+  const ps=$('#mPS').checked, cp=$('#mCP').checked, co=$('#mCo').value.trim();
+  const pT=modal.querySelector('[name=mpsT]:checked'), cT=modal.querySelector('[name=mcpT]:checked');
+  const prod=ps&&cp?'ProScan+ and Cost+':ps?'ProScan+':cp?'Cost+':'';
+  const lines=['Hi Smoothx team,','',(ended?`I’m an existing Smoothx customer and I’d like pricing for ${prod}.`:`I’m an existing Smoothx customer and I’d like the Black Friday discount on ${prod}.`),''];
+  if(ps&&pT) lines.push(`ProScan+ tier: ${PS_T[pT.value].l} supplier invoices a month (estimated value ${m(last.psYr)} a year)`);
+  if(cp&&cT) lines.push(`Cost+ tier: ${ACV_T.find(t=>t.k===cT.value).l()} annual cost-plus contract value (estimated value ${m(last.cpYr)} a year)`);
+  if(!ended) lines.push('','Please include the VIP onboarding that comes with the Black Friday offer.');
+  lines.push('',`Company: ${co}`,'Name:','Smoothx account email:');
+  const subj=(ended?'Pricing enquiry: ':'Black Friday discount: ')+(prod||'add-ons')+(co?' – '+co:'')+' (existing customer)';
+  $('#mSend').href='mailto:hello@smoothx.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n'));
+  $('#mSend').textContent=prod?`Email my ${prod} request`:'Email my request';
+  if(ps||cp) $('#mErr').textContent='';
+}
+function openClaim(k){
+  lastF=document.activeElement;
+  $('#mPS').checked=k!=='cp'; $('#mCP').checked=k!=='ps';
+  renderTiers(); buildSend();
+  modal.classList.add('on'); scrim.classList.add('on'); modal.setAttribute('aria-hidden','false');
+  setTimeout(()=>{const f=modal.querySelector('.tiers input:checked'); (f||$('#mPS')).focus()},200);
+}
+function closeClaim(){ modal.classList.remove('on'); scrim.classList.remove('on'); modal.setAttribute('aria-hidden','true'); lastF&&lastF.focus&&lastF.focus(); }
+document.addEventListener('click',e=>{const a=e.target.closest('[data-claim]'); if(a){e.preventDefault(); openClaim(a.dataset.claim);}});
+$('#cmX').onclick=closeClaim; scrim.onclick=closeClaim;
+['#mPS','#mCP'].forEach(id=>$(id).addEventListener('change',buildSend));
+$('#mCo').addEventListener('input',buildSend);
+$('#mSend').addEventListener('click',e=>{ if(!$('#mPS').checked&&!$('#mCP').checked){e.preventDefault();$('#mErr').textContent='Choose ProScan+, Cost+ or both.';} });
+document.addEventListener('keydown',e=>{
+  if(!modal.classList.contains('on')) return;
+  if(e.key==='Escape'){closeClaim();return}
+  if(e.key==='Tab'){const f=[...modal.querySelectorAll('button,a[href],input')].filter(x=>!x.disabled&&x.offsetParent&&!(x.type==='radio'&&!x.checked));const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+/* countdown to the end of 30 November, viewer’s local time */
+const END=new Date(2026,10,30,23,59,59);
+const pad=n=>String(n).padStart(2,'0');
+function tick(){
+  let ms=END-new Date();
+  if(ms<=0){
+    if(!ended){ended=true;$('#cdBox').classList.add('ended');$('#cdLab').textContent='The Black Friday offer has ended';
+      $$('[data-claim]').forEach(a=>{a.firstChild.nodeValue=a.closest('.mbar')?'Talk to us':'Talk to us about pricing '});
+      $$('[data-cd="short"]').forEach(e=>e.textContent='offer ended');$('#cmTag').hidden=true;$('#mVip').hidden=true;$$('.vip,.tag-vip').forEach(e=>e.hidden=true);$('#cmT').textContent='Ask about pricing';$('#cmP').textContent='Pick your tiers and we’ll reply with pricing for your existing account.';updateClaims()}
+    $$('[data-cd="d"],[data-cd="h"],[data-cd="m"],[data-cd="s"]').forEach(e=>e.textContent='00');return;
+  }
+  const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,mi=Math.floor(ms/6e4)%60,se=Math.floor(ms/1e3)%60;
+  $('[data-cd="d"]').textContent=d;$('[data-cd="h"]').textContent=pad(h);$('[data-cd="m"]').textContent=pad(mi);$('[data-cd="s"]').textContent=pad(se);
+  $$('[data-cd="short"]').forEach(e=>e.textContent=`${d}d ${pad(h)}h ${pad(mi)}m ${pad(se)}s`);
+}
+tick(); setInterval(tick,1000);
+setCur(C);
+})();
+</script>
+</body>
+</html>
