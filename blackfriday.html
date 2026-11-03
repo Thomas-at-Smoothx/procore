@@ -337,7 +337,7 @@ function buildMail(n){
   if(!ended) L.push('','Please include the VIP onboarding that comes with Black Friday orders.');
   L.push('','Company:','Name:','Phone:');
   const subj=(ended?'Pricing enquiry: ':'Black Friday – lock in my price: ')+prod;
-  const href='mailto:hello@smoothx.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(L.join('\n'));
+  const href='mailto:thomas.bruneau@smoothx.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(L.join('\n'));
   ['#claim','#claimM'].forEach(id=>{const a=$(id);a.href=href;a.classList.toggle('dis',!n)});
 }
 ['#claim','#claimM'].forEach(id=>$(id).addEventListener('click',e=>{if(!st.on.AC&&!st.on.PS&&!st.on.CP){e.preventDefault();$('#onAC').focus()}}));
